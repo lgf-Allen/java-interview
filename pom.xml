@@ -15,6 +15,12 @@
     <packaging>pom</packaging>
     <name>java-interview-parent</name>
     <url>https://github.com/lgf-Allen/java-interview.git</url>
+    <developers>
+        <developer>
+            <id>凌风</id>
+            <email>lingfeng.allen@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
