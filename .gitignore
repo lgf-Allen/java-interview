@@ -1,0 +1,5 @@
+#.gitignore
+#Ignore class files
+*.class
+.idea/
+target/
