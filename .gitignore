@@ -1,5 +1,6 @@
 #.gitignore
 #Ignore class files
+*.iml
 *.class
 .idea/
 target/
