@@ -6,6 +6,9 @@ package com.allen.thread.communication;
  * 2. 等待和唤醒机制 {@link WaitAndNotify},
  * Java多线程的等待/通知机制是基于Object类的wait()方法和notify(), notifyAll()方法来实现的。
  * 3. 信号量 {@link Signal}
+ * 4. 管道
+ * 管道是基于“管道流”的通信方式。JDK提供了PipedWriter、 PipedReader、 PipedOutputStream、 PipedInputStream。
+ * 其中，前面两个是基于字符的，后面两个是基于字节流的。
  *
  * @Author: lingfeng
  * @Date: 2020/3/29 21:16

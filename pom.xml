@@ -10,6 +10,7 @@
     <modules>
         <module>java-collection</module>
         <module>java-multi-thread</module>
+        <module>java-books</module>
     </modules>
 
     <packaging>pom</packaging>
