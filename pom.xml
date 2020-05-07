@@ -11,6 +11,7 @@
         <module>java-collection</module>
         <module>java-multi-thread</module>
         <module>java-books</module>
+        <module>java-algorithm</module>
     </modules>
 
     <packaging>pom</packaging>

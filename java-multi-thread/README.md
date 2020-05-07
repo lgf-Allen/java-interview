@@ -20,3 +20,5 @@
 #### 7.2 wait释放cpu资源，同时释放锁；sleep释放cpu资源，但是不释放锁，所以易死锁
 #### 7.3 wait必须放在同步块或同步方法中，而sleep可以再任意位置
 #### 7.4 wait方法来源于Object，sleep来源于Thread
+
+### 8. Executor
