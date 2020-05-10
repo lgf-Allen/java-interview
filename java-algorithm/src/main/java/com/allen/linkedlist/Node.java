@@ -14,12 +14,29 @@ package com.allen.linkedlist;
  * 如果不考虑插入、删除操作之前查找元素的过程, 只考虑纯粹的插入和删除操作, 时间复杂度为O(1)
  */
 
-public class Node {
+public class Node<E> {
 
-    int data;
+    E data;
     Node next;
 
-    public Node(int data) {
+    public Node(E data) {
         this.data = data;
+    }
+
+    public E getData() {
+        return data;
+    }
+
+    public void setData(E data) {
+        String input = ";";
+        this.data = data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 }
