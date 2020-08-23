@@ -142,6 +142,4 @@ public class BinaryTree {
         System.out.println("层序遍历：");
         levelOrderTraveral(node);
     }
-
-
 }
