@@ -6,13 +6,13 @@ package com.allen.tree;
  */
 public class TreeNode {
 
-    int data;
+    int val;
 
-    TreeNode leftNode;
+    TreeNode left;
 
-    TreeNode rightNode;
+    TreeNode right;
 
-    public TreeNode(int data) {
-        this.data = data;
+    public TreeNode(int val) {
+        this.val = val;
     }
 }

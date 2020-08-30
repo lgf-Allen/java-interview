@@ -49,10 +49,10 @@ public class DeserializeAndSerialize {
             sb.append(NULL).append(SEP);
             return;
         }
-        sb.append(node.data).append(SEP);
-        TreeNode leftNode = node.leftNode;
+        sb.append(node.val).append(SEP);
+        TreeNode leftNode = node.left;
         serialize(leftNode, sb);
-        TreeNode rightNode = node.rightNode;
+        TreeNode rightNode = node.right;
         serialize(rightNode, sb);
     }
 
@@ -77,8 +77,8 @@ public class DeserializeAndSerialize {
             return null;
         }
         TreeNode root = new TreeNode(Integer.parseInt(first));
-        root.leftNode = deserialize(nodes);
-        root.rightNode = deserialize(nodes);
+        root.left = deserialize(nodes);
+        root.right = deserialize(nodes);
         return root;
     }
 

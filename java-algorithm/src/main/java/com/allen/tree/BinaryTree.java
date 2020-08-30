@@ -29,8 +29,8 @@ public class BinaryTree {
         Integer data = inputList.removeFirst();
         if (data != null) {
             node = new TreeNode(data);
-            node.leftNode = createTree(inputList);
-            node.rightNode = createTree(inputList);
+            node.left = createTree(inputList);
+            node.right = createTree(inputList);
         }
         return node;
     }
@@ -44,9 +44,9 @@ public class BinaryTree {
         if (node == null) {
             return;
         }
-        System.out.println(node.data);
-        preOrderTraveral(node.leftNode);
-        preOrderTraveral(node.rightNode);
+        System.out.println(node.val);
+        preOrderTraveral(node.left);
+        preOrderTraveral(node.right);
     }
 
     /**
@@ -58,9 +58,9 @@ public class BinaryTree {
         if (node == null) {
             return;
         }
-        inOrderTraveral(node.leftNode);
-        System.out.println(node.data);
-        inOrderTraveral(node.rightNode);
+        inOrderTraveral(node.left);
+        System.out.println(node.val);
+        inOrderTraveral(node.right);
     }
 
     /**
@@ -72,9 +72,9 @@ public class BinaryTree {
         if (node == null) {
             return;
         }
-        postOrderTraveral(node.leftNode);
-        postOrderTraveral(node.rightNode);
-        System.out.println(node.data);
+        postOrderTraveral(node.left);
+        postOrderTraveral(node.right);
+        System.out.println(node.val);
     }
 
     /**
@@ -88,14 +88,14 @@ public class BinaryTree {
         while (node != null || !stack.isEmpty()) {
             // 迭代访问节点的左孩子，并入栈
             while (node != null) {
-                System.out.println(node.data);
+                System.out.println(node.val);
                 stack.push(node);
-                node = node.leftNode;
+                node = node.left;
             }
             // 如果节点没有左孩子，则弹出栈顶元素，访问节点右孩子
             if (!stack.isEmpty()) {
                 node = stack.pop();
-                node = node.rightNode;
+                node = node.right;
             }
         }
     }
@@ -114,12 +114,12 @@ public class BinaryTree {
         queue.offer(node);
         while (!queue.isEmpty()) {
             TreeNode poll = queue.poll();
-            System.out.println(poll.data);
-            TreeNode leftNode = poll.leftNode;
+            System.out.println(poll.val);
+            TreeNode leftNode = poll.left;
             if (leftNode != null) {
                 queue.offer(leftNode);
             }
-            TreeNode rightNode = poll.rightNode;
+            TreeNode rightNode = poll.right;
             if (rightNode != null) {
                 queue.offer(rightNode);
             }
