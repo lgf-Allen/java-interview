@@ -42,6 +42,7 @@ public class IPSolution {
         System.out.println(ipSolution.validIPAddress("1e1.4.5.6"));
         System.out.println(ipSolution.validIPAddress("1.1.1.1."));
         System.out.println(ipSolution.validIPAddress("2001:0db8:85a3:033:0:8A2E:0370:7334"));
+        System.out.println(ipSolution.validIPAddress("1.0.1."));
     }
 
     public String validIPAddress(String IP) {
@@ -58,25 +59,21 @@ public class IPSolution {
     }
 
     private boolean isIPv4(String IP) {
-        String[] array = IP.split("\\.");
-        if (array.length != 4 || IP.endsWith(".")) {
+        String[] array = IP.split("\\.", -1);
+        if (array.length != 4) {
             return false;
         }
         for (String subString : array) {
-            if (subString.length() != 1 && subString.startsWith("0")) {
+            // 1.0.1.
+            if (subString == null || subString.isEmpty()
+                    || (subString.length() != 1 && subString.startsWith("0") || subString.length() > 3)) {
                 return false;
             }
-            // 此处需要考虑输入的不是数字的时候，不能直接转换
-            Pattern compile = Pattern.compile("[0-9]+");
-            if (!compile.matcher(subString).matches()) {
-                return false;
+            for (char ch : subString.toCharArray()) {
+                if (!Character.isDigit(ch)) {
+                    return false;
+                }
             }
-            // 如果是数字，需要考虑是否溢出
-            BigDecimal bigDecimal = new BigDecimal(subString);
-            if (bigDecimal.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE)) > 0) {
-                return false;
-            }
-
             int value = Integer.parseInt(subString);
             if (value < 0 || value > 255) {
                 return false;
@@ -86,16 +83,12 @@ public class IPSolution {
     }
 
     private boolean isIPv6(String IP) {
-        String[] array = IP.split(":");
-        // 此处需要考虑以":"结尾的情况
-        if (array.length != 8 || IP.endsWith(":")) {
+        String[] array = IP.split(":", -1);
+        if (array.length != 8) {
             return false;
         }
         for (String subString : array) {
-            if (subString == null || subString.length() == 0) {
-                return false;
-            }
-            if (subString.length() != 4) {
+            if (subString == null || subString.length() == 0 || subString.length() > 4) {
                 return false;
             }
             // 判断每位是否符合16进制规则
