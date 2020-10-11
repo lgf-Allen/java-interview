@@ -1,6 +1,7 @@
 package com.allen.exam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,9 +14,35 @@ public class ArraySolution {
 
 
     public static void main(String[] args) {
-        System.out.println(getMaxDistance(new int[][]{
-                {12, 15}, {12, 12}, {10, 10}
-        }));
+        System.out.println(getMaxDistance(new int[][]{{12, 15}, {12, 12}, {10, 10}}));
+        System.out.println(getMaxDistance2(new int[][]{{12, 15}, {12, 12}, {10, 10}}));
+        System.out.println(getMaxDistance2(new int[][]{{0, 15}, {18, 20}, {10, 10}}));
+    }
+
+    public static int getMaxDistance2(int[][] input) {
+        if (input == null || input.length == 0) {
+            return 0;
+        }
+        // 按照从小到大的顺序对数组元素排序
+        Arrays.sort(input, Comparator.comparingInt(o -> o[0]));
+
+        int result = 0;
+        int min = input[0][0];
+        int max = input[0][1];
+        for (int i = 1; i < input.length; i++) {
+            int tempMin = input[i][0];
+            int tempMax = input[i][1];
+            // 只会存在两种情况：1. 第一部分和上一部分没有相交的区间，计算上一部分的距离，将最大最小值赋给当前值
+            if (max < tempMin) {
+                result += max - min;
+                min = tempMin;
+                max = tempMax;
+                // 2. 第一部分与第二部分有相交的区间，找出区间最大值，并将最大值赋给max
+            } else if (max > tempMin && max < tempMax) {
+                max = tempMax;
+            }
+        }
+        return result + max - min;
     }
 
     public static int getMaxDistance(int[][] arr) {
@@ -31,6 +58,7 @@ public class ArraySolution {
         List<Pair> collect = pairs.stream().sorted(Comparator.comparingInt(Pair::getMin)).collect(Collectors.toList());
         int result = 0;
         int min = 0;
+
         int max = 0;
         for (Pair pair : collect) {
             if (min == 0 && max == 0) {
