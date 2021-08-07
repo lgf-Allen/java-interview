@@ -12,6 +12,7 @@
         <module>java-multi-thread</module>
         <module>java-books</module>
         <module>java-algorithm</module>
+        <module>java-design-pattern</module>
     </modules>
 
     <packaging>pom</packaging>
